@@ -2,9 +2,11 @@ import { Request, Response } from 'express';
 import { StudentServices } from './student.service';
 
 const createStudent = async (req: Request, res: Response) => {
+  // console.log('from controller', req.body);
+  const { student: studentData } = req.body;
   try {
-    const student = req.body;
-    const result = await StudentServices.createStudentIntoDB(student);
+    // console.log('from controller', studentData);
+    const result = await StudentServices.createStudentIntoDB(studentData);
     res.status(200).json({
       success: true,
       message: 'Student is created Successfully',
